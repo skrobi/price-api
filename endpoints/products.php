@@ -202,9 +202,10 @@ function checkDuplicates($pdo, $user_id) {
             $params[] = $ean;
         }
         
-        $sql .= "name = ? OR SOUNDEX(name) = SOUNDEX(?)";
+        // POPRAWKA DLA MARIADB: Zastąp SOUNDEX przez LIKE
+        $sql .= "name = ? OR name LIKE ?";
         $params[] = $name;
-        $params[] = $name;
+        $params[] = "%$name%";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
