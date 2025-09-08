@@ -13,7 +13,7 @@ $action = $_GET['action'] ?? 'latest';
 $user_id = ApiHelper::getUserId();
 
 ApiHelper::checkRateLimit($user_id);
-ApiHelper::logRequest('/api/prices.php', $user_id, $method, $_POST);
+ApiHelper::logRequest('/endpoints/prices.php', $user_id, $method, $_POST);
 ApiHelper::ensureUserExists($user_id);
 
 try {

@@ -13,7 +13,7 @@ $action = $_GET['action'] ?? 'list';
 $user_id = ApiHelper::getUserId();
 
 ApiHelper::checkRateLimit($user_id);
-ApiHelper::logRequest('/api/links.php', $user_id, $method, $_POST);
+ApiHelper::logRequest('/endpoints/links.php', $user_id, $method, $_POST);
 ApiHelper::ensureUserExists($user_id);
 
 try {

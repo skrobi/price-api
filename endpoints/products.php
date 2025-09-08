@@ -1,6 +1,6 @@
 <?php
 /**
- * API Endpoint: /api/products.php
+ * API Endpoint: /endpoints/products.php
  * Obsługa produktów - dodawanie, pobieranie, sprawdzanie duplikatów
  */
 
@@ -17,7 +17,7 @@ $user_id = ApiHelper::getUserId();
 ApiHelper::checkRateLimit($user_id);
 
 // Log request
-ApiHelper::logRequest('/api/products.php', $user_id, $method, $_POST);
+ApiHelper::logRequest('/endpoints/products.php', $user_id, $method, $_POST);
 
 // Ensure user exists
 ApiHelper::ensureUserExists($user_id);
@@ -40,7 +40,7 @@ try {
     }
     
 } catch (Exception $e) {
-    error_log("API Error in products.php: " . $e->getMessage());
+    error_log("API Error in endpoints/products.php: " . $e->getMessage());
     ApiHelper::jsonError('Internal server error', 500);
 }
 

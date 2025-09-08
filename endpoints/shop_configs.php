@@ -1,7 +1,7 @@
 <?php
 /**
- * API Endpoint: /api/shop_configs.php
- * Obsługa konfiguracji sklepów - selektory, dostawy, wyszukiwanie
+ * API Endpoint: /endpoints/shop_configs.php
+ * Obsługa konfiguracji sklepów - selektory, dostawy, wyszukiwanie - KOMPATYBILNE Z MARIADB
  */
 
 require_once '../config.php';
@@ -13,7 +13,7 @@ $action = $_GET['action'] ?? 'list';
 $user_id = ApiHelper::getUserId();
 
 ApiHelper::checkRateLimit($user_id);
-ApiHelper::logRequest('/api/shop_configs.php', $user_id, $method, $_POST);
+ApiHelper::logRequest('/endpoints/shop_configs.php', $user_id, $method, $_POST);
 ApiHelper::ensureUserExists($user_id);
 
 try {
@@ -34,7 +34,7 @@ try {
     }
     
 } catch (Exception $e) {
-    error_log("API Error in shop_configs.php: " . $e->getMessage());
+    error_log("API Error in endpoints/shop_configs.php: " . $e->getMessage());
     ApiHelper::jsonError('Internal server error', 500);
 }
 
